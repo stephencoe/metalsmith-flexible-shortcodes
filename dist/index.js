@@ -1,6 +1,6 @@
 "use strict";
 var ShortcodeParser = require('meta-shortcodes'),
-    each = require('lodash.forEach'),
+    each = require('lodash.foreach'),
     merge = require('lodash.merge'),
     plugin;
 plugin = function(opts) {

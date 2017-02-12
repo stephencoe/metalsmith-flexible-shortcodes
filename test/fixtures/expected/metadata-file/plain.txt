@@ -1,2 +1,2 @@
-This should be 'Hello':  
+This should be 'Hello':
 Hello

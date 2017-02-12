@@ -2,4 +2,4 @@
 title: Plain
 shortcodes: true
 ---
-This shows a simple self enclosing shortcode in plain text: [makro]
+This shows a simple self enclosing shortcode in plain text: [makro /]

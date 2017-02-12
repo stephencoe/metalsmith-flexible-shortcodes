@@ -20,7 +20,7 @@ function msFactory(dir, plugins, done) {
     each(plugins, function(plugin) {
         ms.use(plugin.fn(plugin.opts));
     });
-    
+
     ms.destination('../../tmp');
 
     ms.build(function(err) {
@@ -45,7 +45,7 @@ describe('metalsmith flexible shortcodes', function() {
                 }
             },
             fn: require('..')
-        }, 
+        },
         {
             opts: {},
             fn: require('metalsmith-markdown')
@@ -66,7 +66,7 @@ describe('metalsmith flexible shortcodes', function() {
             opts: {
                 shortcodes: {
                     div: function(str) {
-                        return '<div>\n' + str + '\n</div>';
+                        return '<div>' + str + '</div>';
                     }
                 },
                 clean: true
@@ -83,9 +83,9 @@ describe('metalsmith flexible shortcodes', function() {
             opts: {
                 shortcodes: {
                     'var': function(str, params, data) {
-                        for (var name in params) {
-                            return data[name];
-                        }
+                    	for (var i = 0; i< params.length; i++) {
+                    		return data[params[i]];
+                    	}
                     }
                 },
                 clean: true
@@ -113,9 +113,9 @@ describe('metalsmith flexible shortcodes', function() {
             opts: {
                 shortcodes: {
                     'var': function(str, params, data) {
-                        for (var name in params) {
-                            return data[name];
-                        }
+                        for (var i = 0; i< params.length; i++) {
+                    		return data[params[i]];
+                    	}
                     }
                 },
                 clean: true
@@ -126,5 +126,4 @@ describe('metalsmith flexible shortcodes', function() {
             done();
         });
     });
-
 });

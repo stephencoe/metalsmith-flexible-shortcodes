@@ -3,5 +3,5 @@ title: Plain
 shortcodes: true
 test: 'Hello'
 ---
-This should be 'Hello':  
-[var test]
+This should be 'Hello':
+[var test/]

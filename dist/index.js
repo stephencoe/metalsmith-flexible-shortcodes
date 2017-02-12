@@ -2,9 +2,10 @@
 var ShortcodeParser = require('meta-shortcodes'),
     each = require('lodash.forEach'),
     merge = require('lodash.merge'),
-    parser = new ShortcodeParser(),
     plugin;
 plugin = function(opts) {
+  opts.parserOpts = opts.parserOpts || null;
+  var parser = new ShortcodeParser(opts.parserOpts);
   var generated = false,
       generateShortcodes = (function(data) {
         if (!generated) {

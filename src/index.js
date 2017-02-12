@@ -1,11 +1,12 @@
 var ShortcodeParser = require('meta-shortcodes'),
     each      = require('lodash.forEach'),
     merge     = require('lodash.merge'),
-    parser    = new ShortcodeParser(),
     plugin;
 
 
 plugin = function(opts) {
+	opts.parserOpts = opts.parserOpts || null;
+    var parser    = new ShortcodeParser(opts.parserOpts);
     // loop through all the registered shortcodes
     var generated = false,
         generateShortcodes = (data) => {
@@ -17,13 +18,13 @@ plugin = function(opts) {
                 });
                 generated = true;
             }
-        } 
+        }
 
     return (files, metalsmith, done) => {
         each(files, (file, path) => {
             if (!file.shortcodes) { return; }
             var cnt = file.contents.toString(),
-                data = merge({}, file, metalsmith.metadata()); 
+                data = merge({}, file, metalsmith.metadata());
 
             generateShortcodes(data);
 
@@ -39,7 +40,7 @@ plugin = function(opts) {
         });
         done();
     };
-};  
+};
 
 
 module.exports = plugin;

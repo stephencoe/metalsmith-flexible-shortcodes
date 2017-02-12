@@ -126,4 +126,28 @@ describe('metalsmith flexible shortcodes', function() {
             done();
         });
     });
+
+    it('allows custom elements', function(done){
+        msFactory('custom-tags', [{
+            opts: {
+            	parserOpts: {
+            		openPattern: '\\{{',
+            		closePattern: '\\}}'
+            	},
+                shortcodes: {
+                    makro: function() {
+                        return 'I\'m replaced :)';
+                    }
+                }
+            },
+            fn: require('..')
+        },
+        {
+            opts: {},
+            fn: require('metalsmith-markdown')
+        }], function() {
+            dirEqual(path.join(__dirname, 'tmp'), path.join(__dirname, 'fixtures/expected/simple-self-closing'));
+            done();
+        });
+    });
 });
